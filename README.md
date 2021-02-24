@@ -65,14 +65,13 @@ Notes on the User Input Table:
 
 ### Explanations of output table
 
-| PlateID | WT\_LOCATION | KO\_LOCATION | PEAK\_SIZE | Tollerance Range | Exp     | gRNA | WT\_peak | WT\_peak\_abd | WT\_peak\_inKOcells | WT\_peak\_abd\_inKOcells |
-| plate2 | B2 | B3 | 319 | 20 | RG387.5 | gR.23 | 316.91 | 0.466 | 316.95 | 0.298 |
-| ------ | -- | -- | --- | -- | ------- | ----- | ------ | ----- | ------ | ----- |
-| plate2 | B2 | C3 | 319 | 20 | RG387.5 | gR.23 | 316.91 | 0.466 | 316.95 | 0.305 |
-| plate2 | B2 | D3 | 319 | 20 | RG387.5 | gR.23 | 316.91 | 0.466 | 317    | 0.31  |
-| plate2 | B2 | E3 | 319 | 20 | RG387.5 | gR.23 | 316.91 | 0.466 | 316.95 | 0.308 |
-| plate2 | B2 | F3 | 319 | 20 | RG387.5 | gR.23 | 316.91 | 0.466 | 316.95 | 0.3   |
-| plate2 | B2 | G3 | 319 | 20 | RG387.5 | gR.23 | 316.91 | 0.466 | 316.86 | 0.29  |
+| PlateID | WT\_LOCATION | KO\_LOCATION | PEAK\_SIZE | Tollerance Range | Exp     | crRNA | WT\_peak | WT\_peak\_abd | WT\_peak\_inKOcells | WT\_peak\_abd\_inKOcells |
+| ------- | ------------ | ------------ | ---------- | ---------------- | ------- | ----- | -------- | ------------- | ------------------- | ------------------------ |
+| plate2  | B2           | B3           | 319        | 20               | RG387.5 | gR.23 | 316.91   | 0.466         | 316.95              | 0.298                    |
+| plate2  | B2           | C3           | 319        | 20               | RG387.5 | gR.23 | 316.91   | 0.466         | 316.95              | 0.305                    |
+| plate2  | B2           | D3           | 319        | 20               | RG387.5 | gR.23 | 316.91   | 0.466         | 317                 | 0.31                     |
+| plate2  | B2           | E3           | 319        | 20               | RG387.5 | gR.23 | 316.91   | 0.466         | 316.95              | 0.308                    |
+| plate2  | B2           | F3           | 319        | 20               | RG387.5 | gR.23 | 316.91   | 0.466         | 316.95              | 0.3                      |
 
 #Same Values foound in the **User-Input-Table**:
 PlateID	= name of plate run. The software can analyze multiple plates at once, as long as the plate number is includede within ```SampleName``` of TFET
