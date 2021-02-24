@@ -62,8 +62,7 @@ Notes on the User Input Table:
 - The program takes into consideration continues and ordered use of wells in the 96WP sent for electrophoresis - the program may still be working fine if some wells are to be missing from the run (as in, Table1.csv does not contains a raw for each of the 96 wells). 
 - Beware of the way the facility lab that runs the IDAA plate labels the samples (usually first column in the exported Thermo Table): In the #run loop section, the program relies on a specific order of information present in the “Sample File Name” column of Table1.csv.
 
-
-### Explanations of output table
+### User-Input-Table Outlook
 
 | PlateID | WT\_LOCATION | KO\_LOCATION | PEAK\_SIZE | Tollerance Range | Exp     | crRNA | WT\_peak | WT\_peak\_abd | WT\_peak\_inKOcells | WT\_peak\_abd\_inKOcells |
 | ------- | ------------ | ------------ | ---------- | ---------------- | ------- | ----- | -------- | ------------- | ------------------- | ------------------------ |
@@ -73,18 +72,26 @@ Notes on the User Input Table:
 | plate2  | B2           | E3           | 319        | 20               | RG387.5 | gR.23 | 316.91   | 0.466         | 316.95              | 0.308                    |
 | plate2  | B2           | F3           | 319        | 20               | RG387.5 | gR.23 | 316.91   | 0.466         | 316.95              | 0.3                      |
 
-#Same Values foound in the **User-Input-Table**:
+### Explanations of output table
+
 PlateID	= name of plate run. The software can analyze multiple plates at once, as long as the plate number is includede within ```SampleName``` of TFET
+
 WT_LOCATION = this is the well coordinate where to expect a peak corresponding to a WT allele. This is usually the location of primer pairs that amplyfy the exon of interest from a CRISPR-CTR sample.
+
 KO_LOCATION = this is the well coordinate where a CRISPR should have cut a gene. The primer pair used in this well should be identical to the primer-pair used int to amplify the peak in "WT_LOCATION".
+
 PEAK_SIZE = What size do you expect your peak to be at?
+
 Tollerance Range = the error range within which we can expect to see the WT peak
+
 Exp = personal experiment number (not relevant to the program)
+
 gRNA = name of the gRNA used (not relevant to the program)
 
-#Output Values:
 WT_peak	= this is the size of the WT allele peak identify in the CTR sample (see WT_LOCATION)
+
 WT_peak_inKOcells = this is the size of the WT allele peak identify in the CRISPR sample (see KO_LOCATION). **WT_peak_inKOcells** and **WT_peak** should be identical, indicating that both peaks were correctly identified by the program. 
+
 WT_peak_abd_inKOcells = This value is calculated exclusivelly using peaks detected in the CRISPR-KO. In the CRISPR-KO well, the WT peak is first identified based on the size found in **WT_peak**. Then, additional, surrounding peaks are identified in the CRISPR-KO well. This value is the ration between the height of the WT peak, vs all other non-WT peaks within 10bp of range.
 
 
