@@ -121,7 +121,7 @@ for line in User_input:
 		if key.split("_")[2] == PlateID:         ## CAREFUL HERE check SampleNames format!!
 			if key.split("_")[4] == WT_well:         ## CAREFUL HERE check SampleNames format!!
  				WT_peak = Find_WT_Peak(Peaks_Dict[key],WT_PEAK_SIZE)[0]
-				WT_peak_abd = Find_WT_Peak(Peaks_Dict[key],WT_PEAK_SIZE)[1]
+ 				WT_peak_abd = Find_WT_Peak(Peaks_Dict[key],WT_PEAK_SIZE)[1]
 	
 	for key, value in Peaks_Dict.items():
 		if key.split("_")[4] == KO_well:   # these conditions was removed: "WT_peak != 1 and" and also: "key.split("_")[2] == PlateID"
