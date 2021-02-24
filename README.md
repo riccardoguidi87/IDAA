@@ -63,21 +63,29 @@ Notes on the User Input Table:
 - Beware of the way the facility lab that runs the IDAA plate labels the samples (usually first column in the exported Thermo Table): In the #run loop section, the program relies on a specific order of information present in the “Sample File Name” column of Table1.csv.
 
 
-
 ### Explanations of output table
 
-well#
-PotentialPeak1_Search1_S / *H = using first peak as a guidance, this is the peak S and H of the HIGHEST peak in tollerance
-PotentialPeak1_Search2_S / *H = using first peak as guidance, this is the peak S and H with the SIZE closest to the expected size (yet this may not be the highest product)
-PotentialPeak2_ect = as above, but for the second Alt-spl peak
-
-HighestPeak_S, HighestPeak_H = the absolute highest peak in reaction (that passed Dictionary filtering) S and H
-
-SecondHighestPeak_S,SecondHighestPeak_H = self explanatory
-
-TotNumbPeaks = how many peaks the PCR has
+| PlateID | WT\_LOCATION | KO\_LOCATION | PEAK\_SIZE | Tollerance Range | Exp     | gRNA | WT\_peak | WT\_peak\_abd | WT\_peak\_inKOcells | WT\_peak\_abd\_inKOcells |
+| ------- | ------------ | ------------ | ---------- | ---------------- | ------- | ----- | -------- | ------------- | ------------------- | ------------------------ |
+| plate2  | B2           | B2           | 319        | 20               | RG387.5 | Ctr   | 316.91   | 0.466         | 316.91              | 0.495                    |
+| plate2  | C2           | C2           | 256        | 20               | RG387.5 | Ctr   | 252.8    | 0.845         | 252.8               | 0.845                    |
+| plate2  | D2           | D2           | 392        | 20               | RG387.5 | Ctr   | 1        | 1             | 1                   | 0.5                      |
+| plate2  | E2           | E2           | 297        | 20               | RG387.5 | Ctr   | 294.01   | 0.921         | 294.01              | 0.921                    |
 
 
+#Same Values foound in the **User-Input-Table**:
+PlateID	= name of plate run. The software can analyze multiple plates at once, as long as the plate number is includede within ```SampleName``` of TFET
+WT_LOCATION = this is the well coordinate where to expect a peak corresponding to a WT allele. This is usually the location of primer pairs that amplyfy the exon of interest from a CRISPR-CTR sample.
+KO_LOCATION = this is the well coordinate where a CRISPR should have cut a gene. The primer pair used in this well should be identical to the primer-pair used int to amplify the peak in "WT_LOCATION".
+PEAK_SIZE = What size do you expect your peak to be at?
+Tollerance Range = the error range within which we can expect to see the WT peak
+Exp = personal experiment number (not relevant to the program)
+gRNA = name of the gRNA used (not relevant to the program)
+
+#Output Values:
+WT_peak	= this is the size of the WT allele peak identify in the CTR sample (see WT_LOCATION)
+WT_peak_inKOcells = this is the size of the WT allele peak identify in the CRISPR sample (see KO_LOCATION). **WT_peak_inKOcells** and **WT_peak** should be identical, indicating that both peaks were correctly identified by the program. 
+WT_peak_abd_inKOcells = This value is calculated exclusivelly using peaks detected in the CRISPR-KO. In the CRISPR-KO well, the WT peak is first identified based on the size found in **WT_peak**. Then, additional, surrounding peaks are identified in the CRISPR-KO well. This value is the ration between the height of the WT peak, vs all other non-WT peaks within 10bp of range.
 
 
 
