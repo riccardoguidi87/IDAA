@@ -1,5 +1,5 @@
-## Electrophoresis_Peak_Search
-### A python script that search for desired peaks in an elecrophoresis table, to return peak height 
+## Automated Analysis of CRISPR KO efficiency via Indel Detection by Amplicon Analysis (IDAA)
+### A Python script that compares peaks of IDAA electrophoresis analysis to automatically infer KO frequency of CRISRP treatement   
 
 This program takes two tables as input:
 1. **ThermoFisher Cloud Electrophoresis Tabulation** (TFET): you can obtain such table when you run your electrophoresis files (.fsa) using a [Cloud Thermo](https://www.thermofisher.com/order/catalog/product/A26811?SID=srch-srp-A26811#/A26811?SID=srch-srp-A26811) account, or any registered Thermo Electrophoresis softwares that can process .fsa file formats (that is the raw data from electrophoresis)
@@ -20,7 +20,7 @@ Where we have in order:
 
 ```SampleName``` :  *plateID _ wellcode _wellcode_samplenumber_extrainfo.fsa*
 
-I am not sure why, but all the TFET I  contain a repetition of the ```wellcode``` (row and Col values combined). The program needs these two ```wellcode``` to be present in the ```SampleName``` in this peocire order.
+I am not sure why, but TFET contains a repetition of the ```wellcode``` (row and Col values combined). The program needs these two ```wellcode``` to be present in the ```SampleName``` in this precise order.
 
 If the ```SampleName``` is prepared differently, and cannot be easily changed, take a look at ```#run loop``` part of the Python script to fix the problem: 
 
@@ -39,19 +39,20 @@ make sure this IS the location of the well ID in SampleName a format that is ‘
 
 - The program does take into consideration you may have more then one plate in Table1.csv, and each plate may contain more then one PP. Make sure that in User_Input.csv you have correctly placed the plate ID (it does’t have to be a number, it can also be a string - most recent agreement in plate labeling from Dixon, the PlatesID are continuous letters A,B,C…. etc… ).
 
-### Instructions
+### Instructions to Run Analysis
 
 - A copy of the original TFET and the User-Input-Table must be present inside the same folder where the Python program runs
-- Rename TFET as: “Table1.csv” - be exact in the name!
+- Rename TFET as: “Table1.csv” - be exact with the name!
 - The User-Input-Table must be named as "User_Input.csv", and should have this outlook:
 
 ### User-Input-Table Outlook
 
-| PlateID    | PP#  | ExpectedPeak1 (nt) | ExpectedPeak2 (nt) | Tollerance (nt) | Gene  | FirstWell | LastWell |
-| ---------- | ---- | ------------------ | ------------------ | --------------- | ----- | --------- | -------- |
-| RUN200916A | A05  | 133                | 195                | 20              | Haus7 | A1        | H12      |
-| RUN200916B | A07  | 128                | 164                | 20              | Ggta1 | A1        | H12      |
-| RUN200916C | B01  | 253                | 417                | 20              | Tyk2  | A1        | H12      |
+
+| PLATE      | WT_LOCATION  | KO_LOCATION| PEAK_SIZE | Tollerance Range | Exp   | crRNA     |
+| ---------- | ------------ | ---------- | --------- | ---------------- | ----- | --------- |
+| RUN200916A | A1           | A2         | 300       | 20               | RG222 | gRNA.21   |
+| RUN200916B | A1 	    | A3         | 300       | 20               | RG222 | gRNA.22   |
+| RUN200916C | A1   	    | A4         | 300       | 20               | RG222 | gRNA.23   |
 
 Notes on the User Input Table:
 
